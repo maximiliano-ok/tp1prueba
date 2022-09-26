@@ -1,0 +1,28 @@
+#Este flujo simple de trabajo ejecuta un nombre y fecha.
+#Es importante comprender que yamel se maneja atra ves de tabulaciones la cual si no estan alineadas darian error.
+#En las extensiones de visual code existe una herramienta que te ayudara llamada "YAML"
+
+
+name: Say hello
+
+#los workflow deben contener una serie de eventos en este caso cada ves que realizamos un push
+# lo realiza en la rama develop creada anteriormente.
+on:
+  push:
+    branches:
+      - develop
+
+#Los workflow deben realizar tareas donde le indicamos los trabajos de debe realizar.
+#como asi tambien el sistema operativo.
+
+jobs:
+  hello_world:
+    runs-on: ubuntu-latest
+#Aqui indicamos los pasos a seguir y que debe ejecutar.
+    steps:
+      - name: Echo the message
+        run: |
+          echo "Hola maxi"
+      - name: Dime la fecha
+        run: date
+      - run: ls -l
