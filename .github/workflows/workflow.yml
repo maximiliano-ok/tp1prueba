@@ -1,13 +1,12 @@
-name: Build and test of Java Project
-
-on: [push]
-
+on: push
+name: Run Webpagetest
 jobs:
-  build:
-    name: Build with Docker
+  webPageTestActions:
+    name: WebPageTestActions
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v2
-      - name: Building the image from the Dockerfile
-        uses: ./.github/action-docker
+      - uses: JCofman/webPagetestAction@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TEST_URL: https://github.com/maximiliano-ok/tp1prueba
+          WEBPAGETEST_API_KEY: ${{ secrets.WEBPAGETEST_API_KEY }}
